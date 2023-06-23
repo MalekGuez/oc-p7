@@ -4,10 +4,124 @@
         <meta charset="utf-8" />
         <title>Les petits plats</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="icon" href="./assets/favicon.ico" />
         <link rel="stylesheet" href="./css/style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        
+        <header class="search-b">
+            <div class="search-b__container">
+                <div class="search-b__logo">
+                    <span>LES PETITS PLATS</span>
+                    <img class="search-b__logo" src="./assets/circle.png">
+                </div>
+                <div class="search-b__content">
+                    <h1 class="search-b__title">CHERCHEZ PARMI PLUS DE 1500 RECETTES</br>DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES</h1>
+                    <div class="search-b__bar">
+                        <input type="text" placeholder="Rechercher une recette, un ingrédient..." onfocus="displayReset()">
+                        <div class="search-b__bar-buttons">
+                            <button type="button" class="search-b__bar-reset" onclick="resetSearch()">
+                                <img src="./assets/xmark.svg">
+                            </button>   
+                            <button type="button" class="search-b__bar-btn" onclick="handleSearch()">
+                                <img src="./assets/loop.svg">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-b__filters">
+                <div class="search-b__filters-content">
+                    <div class="search-b__select search-b__select-ingredients">
+                        <span class="search-b__select-name">Ingrédients <img src="./assets/arrow.svg" onclick="handleSelect('ingredients')"></span>
+
+                        <div class="search-b__select-list" id="ingredients">
+                            <div class="search-b__select-search">
+                                <input type="text" id="search-ingredients" onfocus="displayFilterReset('ingredients')">
+                                <div class="search-b__select-search-buttons">
+                                    <button type="button" class="search-b__select-search-reset" onclick="resetFilterSearch('ingredients')">
+                                        <img src="./assets/xmark.svg">
+                                    </button>   
+                                    <button type="button" class="search-b__select-search-btn" onclick="handleFilterSearch('ingredients')">
+                                        <img src="./assets/grey-loop.svg">
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- <div class="search-b__select-active-filters">      
+                                <span class="search-b__select-filter search-b__select-filter--active">Crème de coco</span>                          
+                            </div> -->
+                            <div class="search-b__select-filters" id="ingredients-list">
+                                <span class="search-b__select-filter">Jus de citron</span>
+                                <span class="search-b__select-filter">Glaçons</span>
+                                <span class="search-b__select-filter">Tomates</span>
+                                <span class="search-b__select-filter">Jus de citron</span>
+                                <span class="search-b__select-filter">Glaçons</span>
+                                <span class="search-b__select-filter">Tomates</span>
+                                <span class="search-b__select-filter">Jus de citron</span>
+                                <span class="search-b__select-filter">Glaçons</span>
+                                <span class="search-b__select-filter">Tomates</span>
+                                <span class="search-b__select-filter">Jus de citron</span>
+                                <span class="search-b__select-filter">Glaçons</span>
+                                <span class="search-b__select-filter">Tomates</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-b__select search-b__select-devices">
+                        <span class="search-b__select-name">Appareils <img src="./assets/arrow.svg" onclick="handleSelect('devices')"></span>
+                    </div>
+                    <div class="search-b__select search-b__select-utensils">
+                        <span class="search-b__select-name">Ustensiles <img src="./assets/arrow.svg" onclick="handleSelect('ustensils')"></span>
+                    </div>                    
+                </div>
+                <span class="search-b__filters-nb">1500 recettes</div>
+            </div>
+        </header>
+        <main class="dishes">
+            <div class="dish">
+                <div class="dish__header">
+                    <img src="./assets/dishes/Recette01.jpg" />
+                    <label class="dish__header-duration">10min</label>
+                </div>
+                <div class="dish__body">
+                    <h2 class="dish__title">
+                        Limonade de Coco
+                    </h2>
+                    <div class="dish__recipe">
+                        <h3 class="dish__body-title">Recette</h3>
+                        <p>Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                    </div>
+                    <div class="dish__ingredients">
+                        <h3 class="dish__body-title">Ingrédients</h3>
+                        <div class="dish__ingredients__list">
+                            <div class="dish__ingredients__item">
+                                <label class="dish__ingredients__item-name">Lait de coco</label>
+                                <span class="dish__ingredients__item-quantity">400ml</span>
+                            </div>
+                            <div class="dish__ingredients__item">
+                                <label class="dish__ingredients__item-name">Jus de citron</label>
+                                <span class="dish__ingredients__item-quantity">2</span>
+                            </div>
+                            <div class="dish__ingredients__item">
+                                <label class="dish__ingredients__item-name">Crème de coco</label>
+                                <span class="dish__ingredients__item-quantity">4 cuillères</span>
+                            </div>
+                            <div class="dish__ingredients__item">
+                                <label class="dish__ingredients__item-name">Sucre</label>
+                                <span class="dish__ingredients__item-quantity">20g</span>
+                            </div>
+                            <div class="dish__ingredients__item">
+                                <label class="dish__ingredients__item-name">Glaçons</label>
+                                <span class="dish__ingredients__item-quantity">2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="scripts/utils/recipe.js"></script>
     </body>
 </html>
