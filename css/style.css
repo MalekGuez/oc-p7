@@ -97,6 +97,40 @@ body {
   height: fit-content;
   margin-right: 24px;
   background: transparent;
+  transition: 0.3s ease all;
+  visibility: hidden;
+  opacity: 0;
+}
+.search-b__active-filters {
+  display: flex;
+  align-items: center;
+  padding: 0 102px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.search-b__active-filter {
+  display: flex;
+  padding: 17px 18px;
+  align-items: center;
+  border-radius: 10px;
+  background: #FFD15B;
+  color: black;
+  gap: 60px;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.search-b__active-filter svg {
+  transition: 0.5s ease all;
+  cursor: pointer;
+}
+.search-b__active-filter svg:hover {
+  color: #3B3B3B;
+}
+.search-b__active-filter svg path {
+  pointer-events: none;
 }
 .search-b__filters {
   display: flex;
@@ -122,15 +156,15 @@ body {
   padding: 17px 16px;
   position: relative;
   cursor: pointer;
+  width: 200px;
 }
 .search-b__select--opened {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.search-b__select-ingredients {
-  width: 200px;
-}
 .search-b__select-name {
+  display: flex;
+  justify-content: space-between;
   font-family: "Manrope";
   font-style: normal;
   font-weight: 500;
@@ -139,8 +173,6 @@ body {
   color: #1B1B1B;
 }
 .search-b__select-name img {
-  cursor: pointer;
-  margin-left: 63px;
   transition: all 0.3s ease;
 }
 .search-b__select-name--opened img {
@@ -160,6 +192,15 @@ body {
   font-size: 14px;
   line-height: 19px;
   padding: 0 16px;
+  z-index: 10;
+  cursor: default;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+.search-b__select-list--visible {
+  visibility: visible;
+  opacity: 1;
 }
 .search-b__select-search {
   position: relative;
@@ -193,6 +234,9 @@ body {
 }
 .search-b__select-search-reset {
   margin-right: 10px;
+  transition: 0.3s ease all;
+  visibility: hidden;
+  opacity: 0;
 }
 .search-b__select-search-reset img {
   width: 10px;
@@ -230,7 +274,7 @@ body {
   align-items: center;
   height: 36px;
   padding: 9px 16px;
-  transform: all 0.3s ease;
+  transition: all 0.15s ease;
 }
 .search-b__select-filter:hover {
   background: yellow;
@@ -243,14 +287,22 @@ body {
 }
 
 .dishes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 43px;
   padding: 0 102px;
+  gap: 30px;
 }
 
 .dish {
   width: 380px;
   display: flex;
   flex-direction: column;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
+  margin-bottom: 30px;
 }
 .dish__header {
   height: 253px;
@@ -285,7 +337,6 @@ body {
 }
 .dish__body {
   padding: 32px 25px;
-  background: white;
 }
 .dish__body-title {
   font-family: "Manrope";
@@ -311,12 +362,25 @@ body {
   margin-bottom: 32px;
 }
 .dish__recipe p {
+  max-height: 100px;
+  overflow-y: auto;
   font-family: "Manrope";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
   color: #1B1B1B;
+}
+.dish__recipe p::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.dish__recipe p::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+.dish__recipe p::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
 }
 .dish__ingredients__list {
   display: flex;
@@ -335,6 +399,9 @@ body {
   color: #1B1B1B;
   font-size: 14px;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .dish__ingredients__item-quantity {
   color: #7A7A7A;

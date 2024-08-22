@@ -113,11 +113,44 @@ body {
             margin-right: 24px;
             background: transparent;
 
-            // opacity: 0;
-            // visibility: hidden;
+            transition: .3s ease all;
+
+            visibility: hidden;
+            opacity: 0;
         }
     }
-
+    &__active-filters {
+        display: flex;
+        align-items: center;
+        padding: 0 102px;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    &__active-filter {
+        display: flex;
+        padding: 17px 18px;
+        align-items: center;
+        border-radius: 10px;
+        background: #FFD15B;
+        color: black;
+        gap: 60px;
+        font-family: Manrope;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        
+        svg {
+            transition: .5s ease all;
+            cursor: pointer;
+            &:hover {
+                color: #3B3B3B;
+            }
+            path {
+                pointer-events: none;
+            }
+        }
+    }
     &__filters {
         display: flex;
         align-items: center;
@@ -146,17 +179,17 @@ body {
         padding: 17px 16px;
         position: relative;
         cursor: pointer;
-
+        width: 200px;
+ 
         &--opened {
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
         }
 
-        &-ingredients {
-            width: 200px;
-        }
-
         &-name {
+            display: flex;
+            justify-content: space-between;
+
             font-family: 'Manrope';
             font-style: normal;
             font-weight: 500;
@@ -165,8 +198,6 @@ body {
             color: $black;
 
             img {
-                cursor: pointer;
-                margin-left: 63px;
                 transition: all .3s ease;
             }
 
@@ -195,6 +226,18 @@ body {
             line-height: 19px;
 
             padding: 0 16px;
+            z-index: 10;
+            cursor: default;
+
+            visibility: hidden;
+            opacity: 0;
+
+            transition: all .2s ease;
+
+            &--visible {
+                visibility: visible;
+                opacity: 1;    
+            }
         }
 
         &-search {
@@ -230,7 +273,13 @@ body {
                     cursor: pointer;
                 }
             }
-            &-reset { margin-right: 10px }
+            &-reset { 
+                margin-right: 10px;
+                transition: .3s ease all;
+
+                visibility: hidden;
+                opacity: 0;
+            }
             &-reset img {
                 width: 10px;
                 height: 10px;
@@ -275,7 +324,7 @@ body {
             height: 36px;
 
             padding: 9px 16px;
-            transform: all .3s ease;
+            transition: all .15s ease;
             &:hover {
                 background: yellow;
                 // color: $grey;
@@ -293,15 +342,26 @@ body {
 
 
 .dishes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-top: 43px;
     padding: 0 102px;
+
+    gap: 30px;
 }
 
 .dish {
     width: 380px;
-
+    
     display: flex;
     flex-direction: column;
+
+    border-radius: 14px;
+    background: white;
+    box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
+    margin-bottom: 30px;
+
     &__header {
         height: 253px;
 
@@ -339,7 +399,7 @@ body {
 
     &__body {
         padding: 32px 25px;
-        background: white;
+
 
         &-title {
             font-family: 'Manrope';
@@ -366,7 +426,22 @@ body {
     }
     &__recipe {
         margin-bottom: 32px;
+
         p {
+            &::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+            }
+            &::-webkit-scrollbar-track {
+                border-radius: 10px;
+            }
+            &::-webkit-scrollbar-thumb{
+                border-radius: 10px;
+                background: rgba(0,0,0,0.2);
+            }
+            max-height: 100px;
+            overflow-y: auto;
+
             font-family: 'Manrope';
             font-style: normal;
             font-weight: 400;
@@ -396,6 +471,9 @@ body {
                 color: $black;
                 font-size: 14px;
                 font-weight: 500;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             &-quantity {
                 color: $grey;
