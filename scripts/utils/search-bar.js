@@ -57,34 +57,34 @@ const handleSearch = (type) => {
     if(s.length >= 3) {
         let newRecipes = [];
 
-        // first algo
-        globalData.forEach(recipe => {
-            if(containsString(recipe.name, s) || containsString(recipe.description, s)){
-                newRecipes.push(recipe);
-            }
-            recipe.ingredients.forEach(i => {
-                if(containsString(i.ingredient, s)){
-                    newRecipes.push(recipe);
-                } 
-            });
-        });
-        
-        // // second algo
-        // for (let i = 0; i < globalData.length; i++) {
-        //     const recipe = globalData[i];
-            
-        //     if (containsString(recipe.name, s) || containsString(recipe.description, s)) {
+        // // first algo
+        // globalData.forEach(recipe => {
+        //     if(containsString(recipe.name, s) || containsString(recipe.description, s)){
         //         newRecipes.push(recipe);
         //     }
-            
-        //     const ingredients = recipe.ingredients;
-        //     for (let j = 0; j < ingredients.length; j++) {
-        //         if (containsString(ingredients[j].ingredient, s)) {
+        //     recipe.ingredients.forEach(i => {
+        //         if(containsString(i.ingredient, s)){
         //             newRecipes.push(recipe);
-        //             break;
-        //         }
-        //     }
-        // }
+        //         } 
+        //     });
+        // });
+        
+        // second algo
+        for (let i = 0; i < globalData.length; i++) {
+            const recipe = globalData[i];
+            
+            if (containsString(recipe.name, s) || containsString(recipe.description, s)) {
+                newRecipes.push(recipe);
+            }
+            
+            const ingredients = recipe.ingredients;
+            for (let j = 0; j < ingredients.length; j++) {
+                if (containsString(ingredients[j].ingredient, s)) {
+                    newRecipes.push(recipe);
+                    break;
+                }
+            }
+        }
 
         let filteredRecipes = [...new Set(newRecipes)];
         displayData(filteredRecipes);
