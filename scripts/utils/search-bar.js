@@ -69,22 +69,22 @@ const handleSearch = (type) => {
             });
         });
         
-        // second algo
-        for (let i = 0; i < globalData.length; i++) {
-            const recipe = globalData[i];
+        // // second algo
+        // for (let i = 0; i < globalData.length; i++) {
+        //     const recipe = globalData[i];
             
-            if (containsString(recipe.name, s) || containsString(recipe.description, s)) {
-                newRecipes.push(recipe);
-            }
+        //     if (containsString(recipe.name, s) || containsString(recipe.description, s)) {
+        //         newRecipes.push(recipe);
+        //     }
             
-            const ingredients = recipe.ingredients;
-            for (let j = 0; j < ingredients.length; j++) {
-                if (containsString(ingredients[j].ingredient, s)) {
-                    newRecipes.push(recipe);
-                    break;
-                }
-            }
-        }
+        //     const ingredients = recipe.ingredients;
+        //     for (let j = 0; j < ingredients.length; j++) {
+        //         if (containsString(ingredients[j].ingredient, s)) {
+        //             newRecipes.push(recipe);
+        //             break;
+        //         }
+        //     }
+        // }
 
         let filteredRecipes = [...new Set(newRecipes)];
         displayData(filteredRecipes);
