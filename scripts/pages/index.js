@@ -6,7 +6,9 @@ const displayData = (dishes, filter = false) => {
     }
     const dishesSection = document.querySelector(".dishes");
     const nbDishes = document.querySelector(".search-b__filters-nb");
+    const noDish = document.querySelector('.no-result');
     dishesSection.innerHTML = "";
+    noDish.innerHTML = "";
 
     dishes.forEach((dish) => {
         // console.log(dish);
@@ -22,6 +24,7 @@ const displayData = (dishes, filter = false) => {
 
         if(dishes.length === 0) {
             // Afficher le message
+            noDish.innerHTML = "Aucune recette ne contient  vous pouvez chercher « tarte aux pommes », « poisson », etc.";
         }
     }
 

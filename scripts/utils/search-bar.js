@@ -69,7 +69,7 @@ const handleSearch = (type) => {
             });
         });
         
-        // // second algo
+        // // // second algo
         // for (let i = 0; i < globalData.length; i++) {
         //     const recipe = globalData[i];
             
